@@ -20,7 +20,7 @@ describe("Route protégée avec token dans cookie", () => {
       .get("/products")
       .set("Cookie", ["token=fauxToken"]);
     expect(res.status).toBe(403);
-    expect(res.body.message).toBe("Token invalide");
+    expect(res.body.message).toBe("Token invalide.");
   });
 
   test("avec cookie token valide => 200", async () => {
