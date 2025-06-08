@@ -1,0 +1,22 @@
+name: CI + Deploy
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  test-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout le code
+        uses: actions/checkout@v3
+
+      - name: Installer les dépendances
+        run: npm install
+
+      - name: Lancer les tests
+        run: npm test
+
+      - name: Déploiement sur Render (si les tests passent)
+        run: curl "${{ secrets.RENDER_DEPLOY_HOOK }}"
