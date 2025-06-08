@@ -15,7 +15,7 @@ router.post('/add',authMiddleware ,isAdmin, async (req, res  ) => {
     res.status(201).json(product);
     
   } catch (error) {
-  res.status(500).send('Erreur serveur.');
+  res.status(500).send('Erreur serveur. ');
   }
 });
 
