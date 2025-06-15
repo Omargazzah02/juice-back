@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { PrismaClient } = require('@prisma/client');
+const { PrismaClient } = require('../generated/prisma');
 const { authMiddleware, isAdmin } = require('../middlewars/auth.middleware');
 
 const prisma = new PrismaClient();
