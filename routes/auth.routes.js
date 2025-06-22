@@ -84,6 +84,8 @@ router.post(
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'Strict',
         maxAge: 24 * 60 * 60 * 1000,
+        role: user.role
+
       });
 
       res.status(200).json({ message: 'Connecté avec succès' });
@@ -121,6 +123,7 @@ router.get('/me', authMiddleware, async (req, res) => {
         username: true,
         firstname: true,
         lastname: true,
+        role : true
       }
     });
 
@@ -131,6 +134,20 @@ router.get('/me', authMiddleware, async (req, res) => {
     res.status(200).json(user);
   } catch (err) {
     console.error("Erreur lors de la récupération de l'utilisateur :", err);
-    res.status(500).json({ message: "Erreur interne du serveur" });
+    res.status(
+      500).json({ message: "Erreur interne du serveur" });
   }
+});
+
+
+
+
+
+
+
+
+
+
+router.get('/', authMiddleware, (req, res) => {
+  res.json({ id: req.user.id, username: req.user.username, role: req.user.role });
 });

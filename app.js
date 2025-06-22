@@ -4,6 +4,8 @@ require('dotenv').config();
 const rateLimit = require("express-rate-limit");
 const cookieParser = require('cookie-parser');
 
+
+
 const app = express();
 
 
@@ -41,6 +43,7 @@ app.use(express.json({ limit: '10kb' }));
 const authRoutes = require('./routes/auth.routes');
 const productsRoutes = require ('./routes/products.routes')
 const ordersRoutes = require ('./routes/orders.routes')
+const usersRoutes = require('./routes/users.routes')
 const logger = require('./logger');
 
 
@@ -63,6 +66,22 @@ app.use('/auth', authRoutes);
 app.use('/products' , productsRoutes)
 
 app.use('/orders', ordersRoutes)
+
+app.use('/users' , usersRoutes)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
